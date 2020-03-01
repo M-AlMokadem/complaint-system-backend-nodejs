@@ -18,10 +18,11 @@ const ComplaintSchema = new Schema({
         _id: {type: mongoose.Schema.Types.ObjectId},
         name: {type: String}
     },
-    status:{
+    issue:{
         _id: {type: mongoose.Schema.Types.ObjectId},
         name: {type: String}
-        }
+    },
+    status: {type: String}
 });
 
 var Complaint = mongoose.model("Complaint", ComplaintSchema);
