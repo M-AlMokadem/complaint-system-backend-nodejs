@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ComplaintSchema = new Schema({
     id:{
         type: Number,
-        required: true
+        required: false
     },
     staffId:{
         type: String,
@@ -22,7 +22,15 @@ const ComplaintSchema = new Schema({
         _id: {type: mongoose.Schema.Types.ObjectId},
         name: {type: String}
     },
-    status: {type: String}
+    description: String,
+    status: {
+        type: String,
+        required: true
+    },
+    createdOn: {
+        type: Date,
+        required: false
+    }
 });
 
 var Complaint = mongoose.model("Complaint", ComplaintSchema);

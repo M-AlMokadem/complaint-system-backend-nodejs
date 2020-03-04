@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      console.log("response", response);
+    //   console.log("response", response);
       res.send(response);
     }
   });
@@ -44,16 +44,20 @@ router.post("/add", async (req, res) => {
     complaint.building = data.building;
     complaint.floor = data.floor;
     complaint.issue = data.issue;
-    complaint.status = data.status;
+    complaint.description = data.description;
+    complaint.status = "New";
+    // complaint.createdOn = new Date.now();
 
     const result = await complaint.save();
     if (result) {
+        console.log('res --> ', res);
       res.status(200).send({
         message: "Complaint Added Successfully",
         ticketNumber: result.id
       });
     }
   } catch (error) {
+      console.log(error.message);
     return res.status(400).send(error.message);
   }
 });
