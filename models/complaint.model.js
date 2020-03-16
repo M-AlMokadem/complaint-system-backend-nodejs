@@ -30,6 +30,10 @@ const ComplaintSchema = new Schema({
     createdOn: {
         type: Date,
         required: false
+    },
+    lastUpdatedOn: {
+        type: Date,
+        required: false
     }
 });
 
