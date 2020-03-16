@@ -11,8 +11,8 @@ var account = require("../controllers/account.contoller");
 
 
 
-module.exports = function(app) {
-  app.use("/api/users", user);
+module.exports = function (app) {
+  app.use("/api/user", user);
   app.use("/api/building", building);
   app.use("/api/floor", floor);
   app.use("/api/issue", issue);

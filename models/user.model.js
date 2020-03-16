@@ -19,17 +19,17 @@ const UserSchema = new Schema({
     type: String,
     required: false
   },
-  firstName:{
+  firstName: {
     type: String,
     required: false
   },
-  lastName:{
+  lastName: {
     type: String,
     required: false
   },
-  isAdmin:{
-      type: Boolean,
-      required: false
+  isAdmin: {
+    type: Boolean,
+    required: false
   }
 });
 
