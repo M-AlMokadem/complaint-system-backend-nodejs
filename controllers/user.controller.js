@@ -66,13 +66,28 @@ router.put("/update", async (req, res) => {
             const result = await user.save();
 
         }
+router.put("/changePassword", async (req, res) => {
+    if (req.body) {
+        var data = req.body;
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(data.password, salt);
+        try {
+            const filter = { _id: data.id };
+            const update = { password: hash };
+            let userResponse = await User.findOneAndUpdate(filter, update, {
+                new: true
+            });
+            console.log("response -> ", userResponse)
+            res.status(200).send({
+                message: "User Updated Successfully"
+            });
+        } catch (error) { }
 
+    } else {
+        return res.status(404).send("Request parameters are null");
     }
-    catch (error) {
-        return res.status(400).send(error.message);
-    }
-
 });
+
 
 module.exports = router;
 
