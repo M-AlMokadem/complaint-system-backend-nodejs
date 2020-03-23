@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
         } else {
             res.status(200).send(response);
         }
-    });
+    }).select("email");
 });
 
 //Add
