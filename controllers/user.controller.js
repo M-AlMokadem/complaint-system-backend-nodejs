@@ -110,6 +110,24 @@ router.put("/changePassword", async (req, res) => {
     }
 });
 
+router.delete("/delete", async (req, res) => {
+    console.log("delete called");
+    console.log(req.body);
+    if (req.body) {
+        var data = req.body;
+    } else {
+        return res.status(404).send("Request parameters are null");
+    }
+    try {
+        User.deleteOne({ _id: data._id }, function (err) { });
+        res.status(200).send({
+            message: "User Deleted Successfully"
+        });
+    }
+    catch (error) {
+        return res.status(400).send(error.message);
+    }
+});
 
 module.exports = router;
 
